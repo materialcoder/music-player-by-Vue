@@ -1,4 +1,4 @@
-#### **头部组件及入口文件编写**
+## **头部组件及入口文件编写**
 
 在 `src/components` 目录下新建 `m-header` 文件夹，并在该文件夹下新建 `m-header.vue` 组件。
 
@@ -95,7 +95,7 @@ new Vue({
 ![m-header](http://img.blog.csdn.net/20171116105332989?font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
-#### **路由配置**
+## **Tab组件和路由配置**
 
 首先在 `componnets` 目录下新建几个空组件：`rank`, `recommend`, `search`, `singer`, `tab`。在 `router` 目录下新建 `index.js` 进行路由配置：
 
@@ -116,7 +116,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/recommend' //主页跳转到recommend页面
+      redirect: '/recommend' //打开主页跳转到recommend页面
     },
     {
       path: '/recommend',
