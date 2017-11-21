@@ -26,7 +26,7 @@
 				this._initScroll()
 			}, 20)
 		},
-		method() {
+		methods: {
 			_initScroll() {
 				if(!this.$refs.wrapper) {
 					return

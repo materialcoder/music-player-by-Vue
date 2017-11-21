@@ -178,4 +178,42 @@ export function getDiscList() {
 
 将获取到的数据在 `recommend` 组件中渲染出来。
 
-列表的局部滚动仍然用better-scroll来做。
+列表的局部滚动仍然用 `better-scroll` 来做。
+
+
+### **Scroll组件抽象及应用**
+
+同样这是一个通用组件，在 `base` 目录下新建一个 `scroll` 目录，并在 `scroll` 目录下创建 `scroll` 组件。这里的 `scroll` 组件同样基于 `better-scroll` 组件来封装。作为一个通用组件，给它定义了一些默认属性和方法。在 `mounted` 生命周期中进行初始化。轮播图和歌曲列表页都是通过在 `recommend` 组件的 `created` 生命周期中异步获取的，因此整个推荐页的高度要等到数据完全获取之后才能够获得。由于异步获取数据的原因，有可能在 `scroll` 组件挂载上去之后，整个数据都还没有获取完，也就没法准确得到整个滚动区域的高度，因此在 `scroll` 组件中监听data数据的变化，来对组件进行再次刷新，保证准确获得滚动区域高度。同样的原因，在 `recommend` 组件中对轮播图的图片加了一个 `onload` 事件，确保图片已经完全加载，能够正确获得轮播图的高度，这里只要有一张图片加载出来了，那么整个轮播的高度也就出来了。所以在 `onload` 事件处理函数中加了一个 `checkLoaded` 标志位。
+
+
+### **vue-lazyload懒加载插件**
+
+https://github.com/hilongjw/vue-lazyload
+
+安装插件：
+> npm install --save vue-lazyload
+
+在 `main.js` 中引入并进行注册：
+
+```
+import VueLazyLoad from 'vue-lazyload'
+
+Vue.use(VueLazyLoad, {
+  loading: require("common/image/default.png") //默认加载的图片
+})
+```
+
+然后在需要使用懒加载的图片上将 `:src` 改为 `v-lazy` 即可：
+
+比如在 `recommend` 组件中：
+```
+<div class="icon">
+  <img v-lazy="item.imgurl" width="60" height="60">
+</div>
+```
+
+可以大大节省流量和提升加载速度
+
+### **Loading组件开发**
+
+基础组件
