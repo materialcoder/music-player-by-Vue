@@ -1,5 +1,9 @@
 # 推荐页面开发
 
+先上一个最终效果：
+
+![](http://img.blog.csdn.net/20171124154440808?font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 ### **数据轮播图获取**
 
 该项目中的所有数据都是从QQ音乐上抓取下来的，采用JSONP方法来获取数据。

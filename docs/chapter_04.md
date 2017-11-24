@@ -1,5 +1,9 @@
 # 歌手页面
 
+先上一个最终效果：
+
+![](http://img.blog.csdn.net/20171124154451335?font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 ### **歌手数据抓取**
 
 歌手数据仍然采用 `jsonp` 的方法从 `QQ` 音乐中抓取。在 `api` 文件夹下新建 `singer.js` 用于获取歌手数据。
