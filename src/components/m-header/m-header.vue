@@ -1,7 +1,6 @@
 <template>
   <div class="m-header">
     <div class="icon"></div>
-    <div class="text">Music</div>
   </div>
 </template>
 
@@ -28,9 +27,4 @@
       margin-right: 9px
       bg-image('logo')
       background-size: 30px 32px
-    .text
-      display: inline-block
-      vertical-align: top
-      line-height: 44px
-      font-size: $font-size-large
 </style>
