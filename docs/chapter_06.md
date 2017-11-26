@@ -1,10 +1,15 @@
 # 播放器页面开发
 
+
+整体效果图：
+
+![](http://img.blog.csdn.net/20171126192116487?font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 ### **播放器Vuex数据设计**
 
 首先要定义 `state`:
 
-```
+```javascript
 // state.js
 import {PLAY_MODE} from 'common/js/config'
 const state = {
@@ -20,7 +25,7 @@ const state = {
 
 这里我们在 `js/config.js` 中配置了一个 `PLAY_MODE` 常量，后面会用到一些常量的时候也会在该文件中进行配置。
 
-```
+```javascript
 //config.js
 export const PLAY_MODE = {
   sequence: 0, //顺序播放
@@ -31,7 +36,7 @@ export const PLAY_MODE = {
 
 然后将这些 `state` 映射到 `getter` 中：
 
-```
+```javascript
 //getter.js
 export const playing = state => state.playing
 
@@ -53,7 +58,7 @@ export const currentSong = (state) => {
 
 然后来定义 `mutation-types` (有哪些动作):
 
-```
+```javascript
 // mutation-types.js
 export const SET_PLAYING_STATE = 'SET_PLAYING_STATE'
 
@@ -70,7 +75,7 @@ export const SET_CURRENT_INDEX = 'SET_CURRENT_INDEX'
 
 最后就是写 `mutations` 了(数据修改逻辑,本身就是一些函数):
 
-```
+```javascript
 // mutations.js
 const mutations = {
   [types.SET_SINGER](state, singer) {
@@ -103,7 +108,7 @@ const mutations = {
 
 `player` 要在任何路由下都能实现播放，因此我们把它放到`App.vue`中去。
 
-```
+```vue
 // player.vue
 <template>
 	<div class="player" v-show="playList.length>0">
@@ -130,7 +135,7 @@ const mutations = {
 
 当我们点击歌曲名称是要跳转到播放器并且开始播放。因此，首先我们需要到 `song-list` 组件中定义跳转逻辑，由于 `song-list` 是一个基础组件，因此在点击的时候我们让它派发一个 `select` 事件，然后到 `music-list` 组件中去进行监听。
 
-```
+```html
 // song-list.vue 在这里我们需要把点击的歌曲信息和它在列表中的索引传过去
 <li @click="selectItem(song,index)" v-for="(song,index) in songs" class="item">
 	<div class="content">
@@ -140,7 +145,7 @@ const mutations = {
 </li>
 ```
 
-```
+```javascript
 // 派发一个 select 事件
 methods: {
 	selectItem(item,index) {
@@ -149,14 +154,14 @@ methods: {
 }
 ```
 
-```
+```html
 // music-list.vue 监听select事件
 <song-list @select="selectItem" :songs="songs"></song-list>
 ```
 
 在监听到 `select` 事件后我们需要修改 `vuex` 中的一系列状态（显示播放器，让点击的歌曲开始播放等），即要提交多个 `mutation`，这里我们就需要用到 `actions` 了：
 
-```
+```javascript
 // store/actions.js
 import * as types from './mutation-types'
 export const selectPlay = function({commit, state}, {list, index}) {
