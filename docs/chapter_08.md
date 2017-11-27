@@ -1,5 +1,11 @@
 # 排行榜页面
 
+最终效果图：
+
+![](http://img.blog.csdn.net/20171127204453722?font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+![](http://img.blog.csdn.net/20171127204512508?font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 ### **数据抓取**
 
 在 `api` 目录下新建一个 `rank.js` ：
@@ -49,15 +55,15 @@ export function getTopList() {
 </template>
 
 <script type="ecmascript-6">
-  import {getTopList} from 'api/rank'
-  import {ERR_OK} from 'api/config'
-  import Scroll from 'base/scroll/scroll'
-  import Loading from 'base/loading/loading'
-  import {playListMixin} from 'common/js/mixin'
+	import {getTopList} from 'api/rank'
+	import {ERR_OK} from 'api/config'
+	import Scroll from 'base/scroll/scroll'
+	import Loading from 'base/loading/loading'
+	import {playListMixin} from 'common/js/mixin'
 
-  export default{
-  	mixins: [playListMixin],
-  	data() {
+	export default{
+		mixins: [playListMixin],
+		data() {
 			return {
 				topList: []
 			}

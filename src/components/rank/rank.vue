@@ -23,20 +23,20 @@
 </template>
 
 <script type="ecmascript-6">
-  import {getTopList} from 'api/rank'
-  import {ERR_OK} from 'api/config'
-  import Scroll from 'base/scroll/scroll'
-  import Loading from 'base/loading/loading'
-  import {playListMixin} from 'common/js/mixin'
-  import {mapMutations} from 'vuex'
+	import {getTopList} from 'api/rank'
+	import {ERR_OK} from 'api/config'
+	import Scroll from 'base/scroll/scroll'
+	import Loading from 'base/loading/loading'
+	import {playListMixin} from 'common/js/mixin'
+	import {mapMutations} from 'vuex'
 
-  export default{
-  	mixins: [playListMixin],
-  	data() {
+	export default{
+		mixins: [playListMixin],
+		data() {
 			return {
 				topList: []
 			}
-  	},
+		},
 		created() {
 			this._getTopList()
 		},
@@ -70,7 +70,7 @@
 			Scroll,
 			Loading
 		}
-  }
+	}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

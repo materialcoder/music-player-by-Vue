@@ -231,6 +231,7 @@
 						index = 0
 					}
 					this.setCurrentIndex(index)
+					this.$refs.audio.play()
 					if(!this.playing) {
 						this.toggelPlaying()
 					}
