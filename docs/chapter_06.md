@@ -1178,7 +1178,7 @@ handleLyric({lineNum, txt}) {
 		let lineEl = this.$refs.lyricLine[lineNum - 5]
 		this.$refs.lyricList.scrollToElement(lineEl, 1000)
 	} else {
-		this.$refs.lyricList.scrollToElement(0, 0, 1000)
+		this.$refs.lyricList.scrollTo(0, 0, 1000)
 	}
 },
 ...
