@@ -1,3 +1,11 @@
+# 优化
+
+路由懒加载
+
+将以前的 import .. from .. 全部改掉：
+
+```javascript
+// router/index.js
 import Vue from 'vue'
 import Router from 'vue-router'
 
@@ -50,56 +58,7 @@ const UserCenter = (resolve) => {
     resolve(module)
   })
 }
+...
+```
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      redirect: '/recommend'
-    },
-    {
-      path: '/recommend',
-      component: Recommend,
-      children: [
-        {
-          path: ':id',
-          component: Disc
-        }
-      ]
-    },
-    {
-      path: '/singer',
-      component: Singer,
-      children: [
-        {
-          path: ':id',
-          component: SingerDetail
-        }
-      ]
-    },
-    {
-      path: '/rank',
-      component: Rank,
-      children: [
-        {
-          path: ':id',
-          component: TopList
-        }
-      ]
-    },
-    {
-      path: '/search',
-      component: Search,
-      children: [
-        {
-          path: ':id',
-          component: SingerDetail
-        }
-      ]
-    },
-    {
-      path: '/user',
-      component: UserCenter
-    }
-  ]
-})
+app.js 能够减小30k左右
