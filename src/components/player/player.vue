@@ -64,7 +64,7 @@
 							<i @click="next" class="icon-next"></i>
 						</div>
 						<div class="icon i-right">
-							<i class="icon icon-not-favorite"></i>
+							<i class="icon" @click="toggleFavorite(currentSong)" :class="getFavoriteIcon(currentSong)"></i>
 						</div>
 					</div>
 				</div>
@@ -589,7 +589,7 @@
 						text-align center
 					.i-right
 						text-align left
-					.i-favorite
+					.icon-favorite
 						color $color-sub-theme
 			&.normal-enter-active, &.normal-leave-active
 				transition all .4s
