@@ -35,6 +35,10 @@
 			beforeScroll: {
 				type: Boolean,
 				default: false
+			},
+			delayRefresh: {
+				type: Number,
+				default: 20
 			}
 		},
 		mounted() {
@@ -94,7 +98,7 @@
 			data() {
 				setTimeout(()=>{
 					this.refresh()
-				}, 20)
+				}, this.delayRefresh)
 			}
 		}
 	}
